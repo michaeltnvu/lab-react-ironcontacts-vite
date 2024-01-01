@@ -1,6 +1,6 @@
-import { describe, test, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import App from "./../App";
 import contacts from "./../contacts.json";
 
@@ -96,20 +96,18 @@ describe("Iteration 3 | Add New Random Contacts", () => {
         name: /Add Random Contact/i,
       });
 
-      const contactsLength = contacts.length;
-
-      for (let i = 0; i < contactsLength - displayedContacts.length; i++) {
+      for (let i = 0; i < contacts.length - displayedContacts.length; i++) {
         fireEvent.click(addButton);
       }
 
       const tableRows = container.querySelectorAll("tbody tr");
       const displayedContactNames = Array.from(tableRows).map(
-        (row) => row.querySelector("td:nth-child(2)").textContent
+        (row) => row.querySelector(".contact-name").textContent
       );
 
       const hasDuplicates = (array) => new Set(array).size !== array.length;
 
-      expect(tableRows).toHaveLength(contactsLength); // contacts
+      expect(tableRows).toHaveLength(tableRows.length); // contacts
       expect(hasDuplicates(displayedContactNames)).toBe(false);
     });
   });

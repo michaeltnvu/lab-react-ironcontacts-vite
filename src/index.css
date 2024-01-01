@@ -67,3 +67,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+img {
+  width: 5vw;
+}
+
+table {
+  margin: 0 auto;
+}
+
+th,
+td {
+  padding: 0 10px;
+}
